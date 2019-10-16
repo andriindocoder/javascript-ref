@@ -1,50 +1,58 @@
-document
-  .querySelector("#generate-names")
-  .addEventListener("submit", generateNames);
+document.querySelector('#generate-names').addEventListener('submit', loadNames);
 
-function generateNames(e) {
-  e.preventDefault();
 
-  //Constant
-  const country = document.querySelector("#country").value;
-  const gender = document.querySelector("#gender").value;
-  const amount = document.querySelector("#quantity").value;
 
-  let url = "https://uinames.com/api/?";
+// Execute the function to query the API
+function loadNames(e) {
+     e.preventDefault();
 
-  if (country !== "") {
-    url += `region=${country}&`;
-  }
-  if (gender !== "") {
-    url += `gender=${gender}&`;
-  }
-  if (country !== "") {
-    url += `amount=${amount}&`;
-  }
 
-  const xhr = new XMLHttpRequest();
+     // Read the values from the form and create the variables
+     const origin = document.getElementById('country').value;
+     const gender = document.getElementById('gender').value;
+     const amount = document.getElementById('quantity').value;
 
-  //Open XHR Connection
-  xhr.open("GET", url, true);
+     // Build the URL
+     let url = 'http://uinames.com/api/?';
+     // Read the origin and append to the url
+     if(origin !== ''){
+          url += `region=${origin}&`;
+     }
+     // Read the gender and append to the url
+     if(gender !== ''){
+          url += `gender=${gender}&`;
+     }    
+      // Read the amount and append to the url
+     if(amount !== ''){
+          url += `amount=${amount}&`;
+     }
+     
+     // Ajax Call
+     const xhr = new XMLHttpRequest();
 
-  xhr.onload = function() {
-    if (this.status === 200) {
-      const names = JSON.parse(this.responseText);
-      console.log(names);
-      let html = "<h3>Generated Names</h3>";
-      html += '<ul class="list">';
-      names.forEach(name => {
-        html += `
-			<li>${name.name} ${name.surname}</li> 
-	 `;
-      });
+     // Open the connection
+     xhr.open('GET', url, true );
 
-      html += "</ul>";
-	  document.querySelector("#result").innerHTML = html;
-    }
-  };
+     // Execute the function
+     xhr.onload = function() {
+          if(this.status === 200) {
+               const names = JSON.parse( this.responseText );
+               
+               // Insert into the HTML
 
-  xhr.send();
+               let html = '<h2>Generated Names</h2>';
+               html += '<ul class="list">';
+               names.forEach(function(name){
+                    html += `
+                         <li>${name.name}</li>
+                    `;
+               });
+               html += '</ul>';
 
-  console.log(url);
+               document.querySelector('#result').innerHTML = html;
+          }
+     }
+
+     // Send the request
+     xhr.send();
 }
