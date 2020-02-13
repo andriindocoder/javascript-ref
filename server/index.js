@@ -11,6 +11,9 @@ app.set('view engine', 'pug');
 // add the views folder to project
 app.set('views', path.join(__dirname, './views'))
 
+// load the public asset folder
+app.use(express.static('public'));
+
 //Listen For the homepage
 app.use('/', routes());
 
