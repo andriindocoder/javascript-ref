@@ -4,10 +4,14 @@ const router = express.Router();
 module.exports = function() {
 	//homepage url
 	router.get('/', (req, res) => {
-		res.render('index');
+		res.render('index', {
+			pageTitle: 'Home'
+		});
 	});
 	router.get('/about', (req, res) => {
-		res.render('about');
+		res.render('about', {
+			pageTitle: 'About Us'
+		});
 	});
 
 	return router;
