@@ -2,6 +2,13 @@ const express = require('express');
 const routes = require('./routes');
 const path = require('path');
 
+// IMport database connection
+const db = require('./config/database');
+
+//test connection
+db.authenticate()
+	.then( () => {console.log("Database Connected")})
+	.error(error => console.log(error));
 //Import the configuration
 const configs = require('./config');
 
