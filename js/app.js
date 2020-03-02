@@ -106,6 +106,9 @@ function clearCart() {
 	while(shoppingCartContent.firstChild) {
 		shoppingCartContent.removeChild(shoppingCartContent.firstChild);
 	}
+
+	//Clear from Local Storage
+	clearLocalStorage();
 }
 
 //Load shopping cart when document ready
