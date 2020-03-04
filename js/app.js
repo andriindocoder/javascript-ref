@@ -22,4 +22,19 @@ function loadNames(e) {
 	if(amount !=0) {
 		url += `amount=${amount}&`;
 	} 
+
+	//Ajax Request
+	const xhr = new XMLHttpRequest();
+
+	//Open Connection
+	xhr.open('GET', url, true);
+
+	//Execute function
+	xhr.onload = function() {
+		if(this.status === 200) {
+			const names = JSON.parse(this.responseText);
+		}
+	}
+
+	xhr.send();
 }
