@@ -33,6 +33,19 @@ function loadNames(e) {
 	xhr.onload = function() {
 		if(this.status === 200) {
 			const names = JSON.parse(this.responseText);
+
+			//Insert to HTML
+			let html = '<h2>Generated Names</h2>';
+			html += '<ul class="list">';
+			names.forEach(function(name) {
+				html += `
+					<li>${name.name}</li>
+				`;
+			});
+
+			html += '</ul>';
+
+			document.querySelector('#result').innerHTML = html;
 		}
 	}
 
