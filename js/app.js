@@ -13,6 +13,13 @@ function loadNames(e) {
 
 	if(origin !=0) {
 		url += `region=${origin}&`;
-		console.log(url);
+	} 
+
+	if(genre !=0) {
+		url += `gender=${genre}&`;
+	} 
+
+	if(amount !=0) {
+		url += `amount=${amount}&`;
 	} 
 }
