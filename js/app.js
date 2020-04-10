@@ -1,5 +1,6 @@
 document.getElementById('button1').addEventListener('click', loadTxt);
 document.getElementById('button2').addEventListener('click', loadJSON);
+document.getElementById('button3').addEventListener('click', loadREST);
 
 function loadTxt() {
 	fetch('data.txt')
@@ -29,4 +30,26 @@ function loadJSON() {
 		});
 		document.getElementById('result').innerHTML = html;
 	})
+}
+
+function loadREST() {
+	fetch('https://picsum.photos/list')
+	.then(function(response){
+		return response.json();
+	})
+	.then(function(images){
+		let html = '';
+		images.forEach(function(image) {
+			html += `
+				<li>
+					<a target="_blank" href="${image.post_url}">View Image</a>
+					${image.author}
+				</li>
+			`;
+		});
+		document.getElementById('result').innerHTML = html;
+	})
+	.catch(function(error) {
+		console.log(error);
+	});
 }
