@@ -33,6 +33,42 @@ document.addEventListener('DOMContentLoaded', () => {
 		//keyPath = indexes of the database
 		let objectStore = db.createObjectStore('appointments', { keyPath: 'key', autoIncrement: true });
 
+		// createIndex 1)fieldname 2) keypath 3)options
+		objectStore.createIndex('petname', 'petname', { unique:false });
+		objectStore.createIndex('ownername', 'ownername', { unique:false });
+		objectStore.createIndex('phone', 'phone', { unique:false });
+		objectStore.createIndex('date', 'date', { unique:false });
+		objectStore.createIndex('hour', 'hour', { unique:false });
+		objectStore.createIndex('symptoms', 'symptoms', { unique:false });
+
 	}
 
+	form.addEventListener('submit', addAppointment);
+
+	function addAppointment(e) {
+		e.preventDefault();
+		//Create new object
+		let newAppointment = {
+			petname : petName.value,
+			ownername : ownerName.value,
+			phone: phone.value,
+			date: date.value,
+			hour: hour.value,
+			symptoms: symptoms.value
+		}
+	}
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
