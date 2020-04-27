@@ -106,7 +106,14 @@ document.addEventListener('DOMContentLoaded', () => {
 					<p class="font-weight-bold">Symptoms: <span class="font-weight-normal">${cursor.value.symptoms}</span></p>
 				`;
 
+				// Add remove button
+				const removeBTN = document.createElement('button');
+				removeBTN.classList.add('btn', 'btn-danger');
+				removeBTN.innerHTML = '<span aria-hidden="true">x</span> Remove';
+				removeBTN.onclick = removeAppointment;
+
 				// Add to HTML
+				appointmentHTML.appendChild(removeBTN);
 				appointments.appendChild(appointmentHTML);
 
 				cursor.continue();
@@ -122,6 +129,10 @@ document.addEventListener('DOMContentLoaded', () => {
 				}
 			}
 		}
+	}
+
+	function removeAppointment(e) {
+		let appointmentID = Number( e.target.parentElement.getAttribute('data-appointment-id') );
 	}
 
 
