@@ -8,4 +8,21 @@ const form = document.querySelector('form'),
 		hour = document.querySelector('#hour'),
 		symptoms = document.querySelector('#symptoms'),
 		appointments = document.querySelector('#appointments'),
-		appointmentTitle = document.querySelector('#appointment-title'); 
+		appointmentTitle = document.querySelector('#appointment-title');
+
+document.addEventListener('DOMContentLoaded', () => {
+	//create the database
+	let AppointmentDB = window.indexedDB.open('appointments', 1);
+
+	// If there's an error
+	AppointmentDB.onerror = function() {
+		console.log('There is an error');
+	}
+	// If success, assign the result
+	AppointmentDB.onsuccess = function() {
+		console.log('Database Ready');
+
+		DB = AppointmentDB.result;
+	}
+
+});
