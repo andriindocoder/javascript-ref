@@ -56,6 +56,24 @@ document.addEventListener('DOMContentLoaded', () => {
 			hour: hour.value,
 			symptoms: symptoms.value
 		}
+
+		let transaction = DB.transaction(['appointments'], 'readwrite');
+		let objectStore = transaction.objectStore('appointments');
+
+		let request = objectStore.add(newAppointment);
+
+		//on success
+		request.onsuccess = () => {
+			form.reset();
+		}
+
+		transaction.oncomplete = () => {
+			console.log('Complete');
+		}
+
+		transaction.onerror = () => {
+			console.log('error');
+		}
 	}
 });
 
