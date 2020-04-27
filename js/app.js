@@ -25,4 +25,14 @@ document.addEventListener('DOMContentLoaded', () => {
 		DB = AppointmentDB.result;
 	}
 
+	//Creating the schema, this method runs once
+	AppointmentDB.onupgradeneeded = function(e) {
+		let db = e.target.result;
+
+		//Create an object store
+		//keyPath = indexes of the database
+		let objectStore = db.createObjectStore('appointments', { keyPath: 'key', autoIncrement: true });
+
+	}
+
 });
