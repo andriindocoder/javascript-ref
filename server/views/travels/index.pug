@@ -11,3 +11,10 @@ block content
                         .card-body  
                             h2 #{travel.title}
                             p 
+                                i.fas.fa-calendar-alt
+                                |  #{travel.departure_date} - #{travel.return_date}
+                            p 
+                                i.fas.fa-dollar-sign
+                                |  #{travel.price}
+                            p=travel.description.substr(0, 100)
+                            a(href=`travels/${travel.id}`, class="btn btn-success btn-block") More Information
