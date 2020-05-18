@@ -1,7 +1,7 @@
 const Travels = require('../models/Travels');
 const Testimonials = require('../models/Testimonials');
 
-exports.homeInformation = (req, res) => {
+exports.homeInformation = async (req, res) => {
     const promises = [];
 
     promises.push(Travels.findAll({limit: 3}));
