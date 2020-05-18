@@ -35,9 +35,11 @@ module.exports = function () {
   });
 
   router.get('/testimonials', (req, res) => {
-    res.render('testimonials', {
-      pageTitle: 'Testimonials'
-    });
+    Testimonials.findAll()
+      .then(testimonials => res.render('testimonials', {
+        pageTitle: 'Testimonials',
+        testimonials
+      }))
   });
 
   router.post('/testimonials', (req, res) => {
@@ -59,13 +61,15 @@ module.exports = function () {
     }
 
     if(errors.length > 0){
-      res.render('testimonials', {
-        pageTitle: 'Testimonials',
-        errors,
-        name,
-        email,
-        message
-      });
+      Testimonials.findAll()
+        .then(testimonials => res.render('testimonials', {
+          pageTitle: 'Testimonials',
+          errors,
+          name,
+          email,
+          message,
+          testimonials
+        }))
     }else{
       Testimonials.create({
         name,
