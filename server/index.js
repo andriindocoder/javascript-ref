@@ -1,6 +1,7 @@
 const express = require('express');
 const routes = require('./routes');
 const path = require('path');
+const bodyParser = require('body-parser')
 
 // IMport database connection
 const db = require('./config/database');
@@ -36,6 +37,9 @@ app.use((req, res, next) => {
 
 //Pass the sitename to the view
 app.locals.sitetitle = config.sitename;
+
+//Body parser
+app.use(bodyParser.urlencoded({extended: true}))
 
 //Listen For the homepage
 app.use('/', routes());
