@@ -1,14 +1,14 @@
 const Testimonials = require('../models/Testimonials');
 
-exports.displayTestimonials = (req, res) => {
-    Testimonials.findAll()
-      .then(testimonials => res.render('testimonials', {
-        pageTitle: 'Testimonials',
-        testimonials
-      }))
+exports.displayTestimonials = async (req, res) => {
+    const testimonials = await Testimonials.findAll();
+    res.render('testimonials', {
+      pageTitle: 'Testimonials',
+      testimonials
+    })
   }
 
-exports.createTestimonial = (req, res) => {
+exports.createTestimonial = async (req, res) => {
     let {name, email, message} = req.body;
 
     //Validate the form
@@ -27,23 +27,25 @@ exports.createTestimonial = (req, res) => {
     }
 
     if(errors.length > 0){
-      res.send('jerapah')
-      Testimonials.findAll()
-        .then(testimonials => res.render('testimonials', {
-          pageTitle: 'Testimonials',
-          errors,
-          name,
-          email,
-          message,
-          testimonials
-        }))
+      const testimonials = await Testimonials.findAll();
+      res.render('testimonials', {
+        pageTitle: 'Testimonials',
+        errors,
+        name,
+        email,
+        message,
+        testimonials
+      })
     }else{
-      Testimonials.create({
+      const result = await Testimonials.create({
         name,
         email,
         message
       })
-      .then(() => res.redirect('/testimonials'))
-      .catch((e) => console.log(e))
+      if(result){
+        res.redirect('/testimonials');
+      }else{
+        console.log('Something went wrong');
+      }
     }
   }
