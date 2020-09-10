@@ -188,10 +188,11 @@ const cars = [
 // let result = car.reduce((total, car) => total + car.price, 0);
 // console.log(result);
 
-const numbers = [1,2,3];
-let result = numbers.reduce((total, number) => total + number, 0);
+// const numbers = [1,2,3];
+// let result = numbers.reduce((total, number) => total + number, 0);
 
-
+let result = cars.some(car => car.make === 'BMW');
+console.log(result);
 
 
 
