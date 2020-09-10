@@ -169,3 +169,25 @@ const cars = [
 		transmission: 'automatic'
 	}
 ];
+
+// cars.forEach(car => console.log(car));
+// cars.map(car => {
+// 	console.log(car);
+// });
+
+let result = cars.map(car => {
+	return car;
+});
+
+console.log(result);
+
+
+
+
+
+
+
+
+
+
+
