@@ -177,16 +177,19 @@ const cars = [
 
 // let result = cars.map(car => car);
 // console.log(result);
-let result = cars.filter(car => {
-	return car.color = 
-});
-let result = cars.filter(car => car.year >= 2015 && car.make === 'BMW');
-console.log(result);
+// let result = cars.filter(car => {
+// 	return car.color = 
+// });
+// let result = cars.filter(car => car.year >= 2015 && car.make === 'BMW');
+// console.log(result);
 
-let result = cars.find(car => car.make === 'BMW');
-console.log(result);
+// let result = cars.find(car => car.make === 'BMW');
+// console.log(result);
+// let result = car.reduce((total, car) => total + car.price, 0);
+// console.log(result);
 
-
+const numbers = [1,2,3];
+let result = numbers.reduce((total, number) => total + number, 0);
 
 
 
