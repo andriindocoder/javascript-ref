@@ -177,11 +177,10 @@ const cars = [
 
 // let result = cars.map(car => car);
 // console.log(result);
-let result = cars.map(car => {
-	if(car.color === 'Black'){
-		return car;
-	}
+let result = cars.filter(car => {
+	return car.color = 
 });
+let result = cars.filter(car => car.year >= 2015 && car.make === 'BMW');
 console.log(result);
 
 
