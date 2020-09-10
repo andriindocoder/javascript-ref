@@ -183,6 +183,8 @@ let result = cars.filter(car => {
 let result = cars.filter(car => car.year >= 2015 && car.make === 'BMW');
 console.log(result);
 
+let result = cars.find(car => car.make === 'BMW');
+console.log(result);
 
 
 
