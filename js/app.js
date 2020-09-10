@@ -175,12 +175,14 @@ const cars = [
 // 	console.log(car);
 // });
 
+// let result = cars.map(car => car);
+// console.log(result);
 let result = cars.map(car => {
-	return car;
+	if(car.color === 'Black'){
+		return car;
+	}
 });
-
 console.log(result);
-
 
 
 
